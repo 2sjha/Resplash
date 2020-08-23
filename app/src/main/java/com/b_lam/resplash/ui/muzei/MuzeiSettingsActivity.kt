@@ -87,12 +87,6 @@ class MuzeiSettingsActivity : BaseActivity() {
                 startActivity(Intent(context, AutoWallpaperCollectionActivity::class.java))
                 true
             }
-
-            sharedViewModel.resplashProLiveData.observe(viewLifecycleOwner) {
-                if (it?.entitled != true) {
-                    resetCustomSourceIfNotEntitled()
-                }
-            }
         }
 
         private fun setCustomSourceVisibility(value: String?) {
@@ -102,16 +96,6 @@ class MuzeiSettingsActivity : BaseActivity() {
                 value == AutoWallpaperWorker.Companion.Source.USER
             findPreference<Preference>("auto_wallpaper_search_terms")?.isVisible =
                 value == AutoWallpaperWorker.Companion.Source.SEARCH
-        }
-
-        private fun resetCustomSourceIfNotEntitled() {
-            if (AutoWallpaperWorker.Companion.Source.SOURCE_ENTITLED
-                    .contains(sharedPreferencesRepository.autoWallpaperSource)) {
-                val newValue = AutoWallpaperWorker.Companion.Source.FEATURED
-                val sourcePreference = findPreference<ListPreference>("auto_wallpaper_source")
-                sourcePreference?.value = newValue
-                sourcePreference?.callChangeListener(newValue)
-            }
         }
     }
 }

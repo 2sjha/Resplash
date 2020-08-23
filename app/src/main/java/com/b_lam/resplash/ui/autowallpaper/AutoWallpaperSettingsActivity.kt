@@ -261,12 +261,6 @@ class AutoWallpaperSettingsActivity :
                     true
                 }
             }
-
-            sharedViewModel.resplashProLiveData.observe(viewLifecycleOwner) {
-                if (it?.entitled != true) {
-                    resetCustomSourceIfNotEntitled()
-                }
-            }
         }
 
         override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
@@ -294,16 +288,6 @@ class AutoWallpaperSettingsActivity :
                 value == AutoWallpaperWorker.Companion.Source.USER
             findPreference<Preference>("auto_wallpaper_search_terms")?.isVisible =
                 value == AutoWallpaperWorker.Companion.Source.SEARCH
-        }
-
-        private fun resetCustomSourceIfNotEntitled() {
-            if (AutoWallpaperWorker.Companion.Source.SOURCE_ENTITLED
-                    .contains(sharedPreferencesRepository.autoWallpaperSource)) {
-                val newValue = AutoWallpaperWorker.Companion.Source.FEATURED
-                val sourcePreference = findPreference<ListPreference>("auto_wallpaper_source")
-                sourcePreference?.value = newValue
-                sourcePreference?.callChangeListener(newValue)
-            }
         }
     }
 }

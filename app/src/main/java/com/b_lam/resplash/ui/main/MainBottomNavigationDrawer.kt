@@ -59,7 +59,6 @@ class MainBottomNavigationDrawer : BottomSheetDialogFragment() {
         with(sharedViewModel) {
             resplashProLiveData.observe(viewLifecycleOwner) {
                 with(drawer_navigation_view.menu) {
-                    findItem(R.id.action_upgrade).isVisible = !(it?.entitled ?: false)
                     findItem(R.id.action_donate).isVisible = it?.entitled ?: false
                 }
             }
