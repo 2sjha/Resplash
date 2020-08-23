@@ -226,15 +226,8 @@ class AutoWallpaperSettingsActivity :
 
             findPreference<ListPreference>("auto_wallpaper_source")
                 ?.setOnPreferenceChangeListener { _, newValue ->
-                    if (AutoWallpaperWorker.Companion.Source.SOURCE_UNENTITLED.contains(newValue) ||
-                        sharedViewModel.resplashProLiveData.value?.entitled == true) {
-                        setCustomSourceVisibility(newValue.toString())
-                        true
-                    } else {
-                        startActivity(Intent(context, UpgradeActivity::class.java))
-                        context.toast(getString(R.string.upgrade_required))
-                        false
-                    }
+                    setCustomSourceVisibility(newValue.toString())
+                    true
                 }
 
             setCustomSourceVisibility(sharedPreferencesRepository.autoWallpaperSource)
