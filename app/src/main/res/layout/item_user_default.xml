@@ -29,8 +29,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/user_image_view"
         app:layout_constraintBottom_toTopOf="@id/username_text_view"
-        style="@style/TextAppearance.Resplash.Subtitle2"
-        tools:text="Brandon Lam"/>
+        style="@style/TextAppearance.Resplash.Subtitle2"/>
 
     <TextView
         android:id="@+id/username_text_view"
@@ -41,8 +40,7 @@
         app:layout_constraintStart_toStartOf="@id/full_name_text_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/full_name_text_view"
-        app:layout_constraintBottom_toBottomOf="@id/user_image_view"
-        tools:text="\@brandon_lam" />
+        app:layout_constraintBottom_toBottomOf="@id/user_image_view"/>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/photo_one_card_view"

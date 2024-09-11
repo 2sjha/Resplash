@@ -71,12 +71,6 @@ class MainBottomNavigationDrawer : BottomSheetDialogFragment() {
         }
 
         with(sharedViewModel) {
-            resplashProLiveData.observe(viewLifecycleOwner) {
-                with(navigationDrawerBinding.drawerNavigationView.menu) {
-                    findItem(R.id.action_upgrade).isVisible = !(it?.entitled ?: false)
-                    findItem(R.id.action_donate).isVisible = it?.entitled ?: false
-                }
-            }
             authorizedLiveData.observe(viewLifecycleOwner) {
                 with(navigationDrawerContentBinding.headerNavigationView.menu) {
                     setGroupVisible(R.id.group_unauthorized, !it)

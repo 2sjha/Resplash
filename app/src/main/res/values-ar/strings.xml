@@ -249,23 +249,6 @@
     <string name="login_success">نجح تسجيل الدخول</string>
     <string name="need_to_log_in">يجب عليك تسجيل الدخول من اجل اتمام الامر</string>
 
-    <!-- Upgrade -->
-    <string name="upgrade_to_resplash_pro">الترقية إلى Resplash Pro</string>
-    <string name="pro_feature_title">What\'s in it for you?</string>
-    <string name="pro_feature_one">Customize Auto Wallpaper</string>
-    <string name="pro_feature_one_subtitle">Some people prefer black &amp; white photos, some would rather see nature images instead of urban ones. Customize exactly what types of wallpapers you see from Auto Wallpaper</string>
-    <string name="pro_feature_two">Future exclusive features</string>
-    <string name="pro_feature_two_subtitle">Get access to future pro exclusive features</string>
-    <string name="pro_feature_three">Support development</string>
-    <string name="pro_feature_three_subtitle">Going pro helps support the development of Resplash</string>
-    <string name="go_pro">Go Pro</string>
-    <string name="restore_purchase">Restore Purchase</string>
-    <string name="upgrade_required">تحتاج إلى Resplash Pro للقيام بذلك!</string>
-
-    <!-- Donation -->
-    <string name="support_development">دعم تطوير التطبيق</string>
-    <string name="you_are_welcome">على الرحب و السعة</string>
-
     <!-- About -->
     <string name="about">عن</string>
     <string name="licenses">تراخيص مفتوحة المصدر</string>

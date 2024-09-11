@@ -245,23 +245,6 @@
     <string name="login_success">Sesión iniciada</string>
     <string name="need_to_log_in">Debes iniciar sesión para hacer eso</string>
 
-    <!-- Upgrade -->
-    <string name="upgrade_to_resplash_pro">Actualiza a Resplash Pro</string>
-    <string name="pro_feature_title">¿Qué hay para ti?</string>
-    <string name="pro_feature_one">Personaliza tu Fondo Automático</string>
-    <string name="pro_feature_one_subtitle">Algunos prefieren fotos en blanco y negro, otros prefieren ver imágenes de la naturaleza en lugar de las urbanas. Personaliza exactamente los tipos de fondos de pantalla que ves en Fondos Automáticos.</string>
-    <string name="pro_feature_two">Actualizaciones futuras exclusivas</string>
-    <string name="pro_feature_two_subtitle">Acceda a las futuras características exclusivas de los profesionales</string>
-    <string name="pro_feature_three">Apoyo al desarrollo</string>
-    <string name="pro_feature_three_subtitle">Obtener pro ayuda al desarrollo de Resplash</string>
-    <string name="go_pro">Obtener Pro</string>
-    <string name="restore_purchase">Restaurar pago</string>
-    <string name="upgrade_required">¡Necesitas Resplash Pro para hacer eso!</string>
-
-    <!-- Donation -->
-    <string name="support_development">Desarrollo</string>
-    <string name="you_are_welcome">De nada</string>
-
     <!-- About -->
     <string name="about">Info</string>
     <string name="licenses">Licencias</string>

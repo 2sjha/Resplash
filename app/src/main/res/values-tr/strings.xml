@@ -245,23 +245,6 @@
     <string name="login_success">Giriş başarılı</string>
     <string name="need_to_log_in">Bunu yapmak için giriş yapmış olmanız lazım</string>
 
-    <!-- Upgrade -->
-    <string name="upgrade_to_resplash_pro">Resplash Pro sürümüne geçin</string>
-    <string name="pro_feature_title">What\'s in it for you?</string>
-    <string name="pro_feature_one">Customize Auto Wallpaper</string>
-    <string name="pro_feature_one_subtitle">Some people prefer black &amp; white photos, some would rather see nature images instead of urban ones. Customize exactly what types of wallpapers you see from Auto Wallpaper</string>
-    <string name="pro_feature_two">Future exclusive features</string>
-    <string name="pro_feature_two_subtitle">Get access to future pro exclusive features</string>
-    <string name="pro_feature_three">Support development</string>
-    <string name="pro_feature_three_subtitle">Going pro helps support the development of Resplash</string>
-    <string name="go_pro">Go Pro</string>
-    <string name="restore_purchase">Restore Purchase</string>
-    <string name="upgrade_required">Bunu yapmak için Resplash Pro\'ya ihtiyacınız var!</string>
-
-    <!-- Donation -->
-    <string name="support_development">Geliştiriciyi Destekle</string>
-    <string name="you_are_welcome">Rica ederim</string>
-
     <!-- About -->
     <string name="about">Hakkında</string>
     <string name="licenses">Lisanslar</string>

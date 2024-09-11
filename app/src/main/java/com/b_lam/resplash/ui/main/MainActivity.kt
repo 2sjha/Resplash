@@ -8,8 +8,6 @@ import android.util.SparseArray
 import android.view.Menu
 import android.view.MenuItem
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -25,25 +23,15 @@ import com.b_lam.resplash.ui.autowallpaper.AutoWallpaperSettingsActivity
 import com.b_lam.resplash.ui.base.BaseActivity
 import com.b_lam.resplash.ui.base.BaseSwipeRecyclerViewFragment
 import com.b_lam.resplash.ui.debug.DebugActivity
-import com.b_lam.resplash.ui.donation.DonationActivity
 import com.b_lam.resplash.ui.login.LoginActivity
 import com.b_lam.resplash.ui.search.SearchActivity
 import com.b_lam.resplash.ui.settings.SettingsActivity
-import com.b_lam.resplash.ui.upgrade.UpgradeActivity
 import com.b_lam.resplash.ui.user.UserActivity
 import com.b_lam.resplash.ui.user.edit.EditProfileActivity
 import com.b_lam.resplash.util.CustomTabsHelper
 import com.b_lam.resplash.util.livedata.observeEvent
-import com.b_lam.resplash.util.loadPhotoUrl
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.tabs.TabLayout
-import com.google.firebase.inappmessaging.FirebaseInAppMessagingDisplay
-import com.google.firebase.inappmessaging.FirebaseInAppMessagingDisplayCallbacks
-import com.google.firebase.inappmessaging.ktx.inAppMessaging
-import com.google.firebase.inappmessaging.model.CardMessage
-import com.google.firebase.inappmessaging.model.InAppMessage
-import com.google.firebase.inappmessaging.model.MessageType
-import com.google.firebase.ktx.Firebase
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity(R.layout.activity_main) {
@@ -84,16 +72,10 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
     override fun onStart() {
         super.onStart()
         viewModel.refreshUserProfile()
-
-        val inAppMessagingDisplay = FirebaseInAppMessagingDisplay { inAppMessage, callbacks ->
-            showInAppMessagingDialog(inAppMessage, callbacks)
-        }
-        Firebase.inAppMessaging.setMessageDisplayComponent(inAppMessagingDisplay)
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Firebase.inAppMessaging.clearDisplayListener()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -154,8 +136,6 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
             }
             R.id.action_log_out -> viewModel.logout()
             R.id.action_auto_wallpaper -> startActivity(Intent(this, AutoWallpaperSettingsActivity::class.java))
-            R.id.action_upgrade -> startActivity(Intent(this, UpgradeActivity::class.java))
-            R.id.action_donate -> startActivity(Intent(this, DonationActivity::class.java))
             R.id.action_settings -> startActivity(Intent(this, SettingsActivity::class.java))
             R.id.action_about -> startActivity(Intent(this, AboutActivity::class.java))
         }
@@ -189,41 +169,6 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
             }
             .create()
             .show()
-    }
-
-    private fun showInAppMessagingDialog(
-        inAppMessage: InAppMessage,
-        callbacks: FirebaseInAppMessagingDisplayCallbacks
-    ) {
-        if (inAppMessage.messageType == MessageType.CARD) {
-            val cardMessage = inAppMessage as? CardMessage
-            callbacks.impressionDetected()
-            val view = layoutInflater.inflate(R.layout.dialog_in_app_messaging, null)
-            view.findViewById<TextView>(R.id.title_text_view)?.text = cardMessage?.title?.text
-            view.findViewById<TextView>(R.id.message_text_view)?.text = cardMessage?.body?.text
-            cardMessage?.portraitImageData?.imageUrl?.let {
-                view.findViewById<ImageView>(R.id.header_image_view)?.loadPhotoUrl(it)
-            }
-            MaterialAlertDialogBuilder(this)
-                .setView(view)
-                .setPositiveButton("Ok") { dialog, _ ->
-                    dialog.cancel()
-                }
-                .setNeutralButton("Learn more") { dialog, _ ->
-                    cardMessage?.primaryAction?.let { callbacks.messageClicked(it) }
-                    startActivity(Intent(this, UpgradeActivity::class.java))
-                    dialog.dismiss()
-                }
-                .setOnCancelListener {
-                    callbacks.messageDismissed(
-                        FirebaseInAppMessagingDisplayCallbacks.InAppMessagingDismissType.CLICK)
-                }
-                .create()
-                .show()
-        } else {
-            callbacks.displayErrorEncountered(
-                FirebaseInAppMessagingDisplayCallbacks.InAppMessagingErrorReason.UNSPECIFIED_RENDER_ERROR)
-        }
     }
 
     private fun openUnsplashSubmitTab() {

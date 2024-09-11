@@ -152,8 +152,7 @@
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toStartOf="@id/user_image_view"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/user_image_view"
-                    tools:text="Brandon Lam"/>
+                    app:layout_constraintTop_toBottomOf="@id/user_image_view"/>
 
                 <TextView
                     android:id="@+id/location_text_view"

@@ -41,9 +41,19 @@ class CollectionRepository(
         return UserCollectionDataSourceFactory(userService, username, scope).createListing()
     }
 
+    suspend fun getCollections(page: Int) =
+        safeApiCall(dispatcher) {
+            collectionService.getCollections(page, Properties.DEFAULT_PAGE_SIZE)
+        }
+
     suspend fun getUserCollections(username: String, page: Int) =
         safeApiCall(dispatcher) {
             userService.getUserCollections(username, page, Properties.DEFAULT_PAGE_SIZE)
+        }
+
+    suspend fun searchCollections(query: String, page: Int) =
+        safeApiCall(dispatcher) {
+            searchService.searchCollections(query, page, Properties.DEFAULT_PAGE_SIZE)
         }
 
     suspend fun getCollection(collectionId: String) =

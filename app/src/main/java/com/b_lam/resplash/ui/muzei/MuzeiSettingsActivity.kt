@@ -13,7 +13,6 @@ import com.b_lam.resplash.databinding.ActivityMuzeiSettingsBinding
 import com.b_lam.resplash.domain.SharedPreferencesRepository
 import com.b_lam.resplash.ui.autowallpaper.collections.AutoWallpaperCollectionActivity
 import com.b_lam.resplash.ui.base.BaseActivity
-import com.b_lam.resplash.ui.upgrade.UpgradeActivity
 import com.b_lam.resplash.util.setupActionBar
 import com.b_lam.resplash.util.toast
 import com.b_lam.resplash.worker.AutoWallpaperWorker
@@ -75,15 +74,8 @@ class MuzeiSettingsActivity : BaseActivity(R.layout.activity_muzei_settings) {
 
             findPreference<ListPreference>("auto_wallpaper_source")
                 ?.setOnPreferenceChangeListener { _, newValue ->
-                    if (AutoWallpaperWorker.Companion.Source.SOURCE_UNENTITLED.contains(newValue) ||
-                        sharedViewModel.resplashProLiveData.value?.entitled == true) {
-                        setCustomSourceVisibility(newValue.toString())
-                        true
-                    } else {
-                        startActivity(Intent(context, UpgradeActivity::class.java))
-                        context.toast(getString(R.string.upgrade_required))
-                        false
-                    }
+                    setCustomSourceVisibility(newValue.toString())
+                    true
                 }
 
             setCustomSourceVisibility(sharedPreferencesRepository.autoWallpaperSource)
@@ -96,12 +88,6 @@ class MuzeiSettingsActivity : BaseActivity(R.layout.activity_muzei_settings) {
                 startActivity(Intent(context, AutoWallpaperCollectionActivity::class.java))
                 true
             }
-
-            sharedViewModel.resplashProLiveData.observe(viewLifecycleOwner) {
-                if (it?.entitled != true) {
-                    resetCustomSourceIfNotEntitled()
-                }
-            }
         }
 
         private fun setCustomSourceVisibility(value: String?) {
@@ -111,16 +97,6 @@ class MuzeiSettingsActivity : BaseActivity(R.layout.activity_muzei_settings) {
                 value == AutoWallpaperWorker.Companion.Source.USER
             findPreference<Preference>("auto_wallpaper_search_terms")?.isVisible =
                 value == AutoWallpaperWorker.Companion.Source.SEARCH
-        }
-
-        private fun resetCustomSourceIfNotEntitled() {
-            if (AutoWallpaperWorker.Companion.Source.SOURCE_ENTITLED
-                    .contains(sharedPreferencesRepository.autoWallpaperSource)) {
-                val newValue = AutoWallpaperWorker.Companion.Source.FEATURED
-                val sourcePreference = findPreference<ListPreference>("auto_wallpaper_source")
-                sourcePreference?.value = newValue
-                sourcePreference?.callChangeListener(newValue)
-            }
         }
     }
 }

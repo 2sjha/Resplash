@@ -12,14 +12,6 @@
         android:id="@+id/group_two"
         android:checkableBehavior="none">
         <item
-            android:id="@+id/action_upgrade"
-            android:icon="@drawable/ic_resplash_24dp"
-            android:title="@string/upgrade_to_resplash_pro" />
-        <item
-            android:id="@+id/action_donate"
-            android:icon="@drawable/ic_favorite_filled_24dp"
-            android:title="@string/support_development" />
-        <item
             android:id="@+id/action_settings"
             android:icon="@drawable/ic_settings_24dp"
             android:title="@string/settings" />

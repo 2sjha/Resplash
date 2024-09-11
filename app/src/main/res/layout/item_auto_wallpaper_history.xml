@@ -33,8 +33,7 @@
             android:singleLine="true"
             android:textAlignment="viewStart"
             android:layout_weight="1"
-            style="@style/TextAppearance.Resplash.Subtitle2"
-            tools:text="Brandon Lam" />
+            style="@style/TextAppearance.Resplash.Subtitle2" />
 
         <TextView
             android:id="@+id/set_date_text_view"

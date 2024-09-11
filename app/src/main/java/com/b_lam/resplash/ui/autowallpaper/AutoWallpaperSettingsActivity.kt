@@ -27,7 +27,6 @@ import com.b_lam.resplash.domain.SharedPreferencesRepository.Companion.PREFERENC
 import com.b_lam.resplash.ui.autowallpaper.collections.AutoWallpaperCollectionActivity
 import com.b_lam.resplash.ui.autowallpaper.history.AutoWallpaperHistoryActivity
 import com.b_lam.resplash.ui.base.BaseActivity
-import com.b_lam.resplash.ui.upgrade.UpgradeActivity
 import com.b_lam.resplash.util.*
 import com.b_lam.resplash.worker.AutoWallpaperWorker
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -230,15 +229,8 @@ class AutoWallpaperSettingsActivity :
 
             findPreference<ListPreference>("auto_wallpaper_source")
                 ?.setOnPreferenceChangeListener { _, newValue ->
-                    if (AutoWallpaperWorker.Companion.Source.SOURCE_UNENTITLED.contains(newValue) ||
-                        sharedViewModel.resplashProLiveData.value?.entitled == true) {
-                        setCustomSourceVisibility(newValue.toString())
-                        true
-                    } else {
-                        startActivity(Intent(context, UpgradeActivity::class.java))
-                        context.toast(getString(R.string.upgrade_required))
-                        false
-                    }
+                    setCustomSourceVisibility(newValue.toString())
+                    true
                 }
 
             setCustomSourceVisibility(sharedPreferencesRepository.autoWallpaperSource)
@@ -272,12 +264,6 @@ class AutoWallpaperSettingsActivity :
                     true
                 }
             }
-
-            sharedViewModel.resplashProLiveData.observe(viewLifecycleOwner) {
-                if (it?.entitled != true) {
-                    resetCustomSourceIfNotEntitled()
-                }
-            }
         }
 
         override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
@@ -305,16 +291,6 @@ class AutoWallpaperSettingsActivity :
                 value == AutoWallpaperWorker.Companion.Source.USER
             findPreference<Preference>("auto_wallpaper_search_terms")?.isVisible =
                 value == AutoWallpaperWorker.Companion.Source.SEARCH
-        }
-
-        private fun resetCustomSourceIfNotEntitled() {
-            if (AutoWallpaperWorker.Companion.Source.SOURCE_ENTITLED
-                    .contains(sharedPreferencesRepository.autoWallpaperSource)) {
-                val newValue = AutoWallpaperWorker.Companion.Source.FEATURED
-                val sourcePreference = findPreference<ListPreference>("auto_wallpaper_source")
-                sourcePreference?.value = newValue
-                sourcePreference?.callChangeListener(newValue)
-            }
         }
     }
 }

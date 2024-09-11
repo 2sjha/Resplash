@@ -20,7 +20,7 @@ import java.io.IOException
 class AutoWallpaperDatabaseMigrationTest {
 
     private val testAutoWallpaperCollection =
-        AutoWallpaperCollection("123", "Title", "Brandon", "Some URL", 123)
+        AutoWallpaperCollection("123", "Title", "Some Name", "Some URL", 123)
 
     @get:Rule
     val helper: MigrationTestHelper = MigrationTestHelper(

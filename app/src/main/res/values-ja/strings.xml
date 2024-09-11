@@ -243,24 +243,6 @@
     <string name="login_banner_subtitle">他にはない無償の高画質画像を手に入れましょう</string>
     <string name="login_success">ログインに成功しました</string>
     <string name="need_to_log_in">ログインしてください</string>
-
-    <!-- Upgrade -->
-    <string name="upgrade_to_resplash_pro">プロバージョンにアップグレード</string>
-    <string name="pro_feature_title">内容</string>
-    <string name="pro_feature_one">オート壁紙をカスタマイズ</string>
-    <string name="pro_feature_one_subtitle">白黒写真が好きな人もいれば、町より自然の写真を好む人もいます。細部までオート壁紙に使用される写真をカスタマイズしましょう</string>
-    <string name="pro_feature_two">今後の限定機能</string>
-    <string name="pro_feature_two_subtitle">今後のプロバージョン限定の機能を手に入れましょう</string>
-    <string name="pro_feature_three">開発を支援</string>
-    <string name="pro_feature_three_subtitle">プロバージョンにアップグレードしていただくとアプリ開発の支援になります</string>
-    <string name="go_pro">アップグレード</string>
-    <string name="restore_purchase">購入を復元する</string>
-    <string name="upgrade_required">プロバージョンにアップグレードしてください</string>
-
-    <!-- Donation -->
-    <string name="support_development">開発を支援</string>
-    <string name="you_are_welcome">どういたしまして</string>
-
     <!-- About -->
     <string name="about">情報</string>
     <string name="licenses">ライセンス</string>

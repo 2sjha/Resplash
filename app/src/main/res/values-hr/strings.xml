@@ -246,23 +246,6 @@
     <string name="login_success">Login successful</string>
     <string name="need_to_log_in">Morate se ulogirati da biste to mogli učiniti</string>
 
-    <!-- Upgrade -->
-    <string name="upgrade_to_resplash_pro">Nadogradite na Resplash Pro</string>
-    <string name="pro_feature_title">Što to znači za vas?</string>
-    <string name="pro_feature_one">Prilagodba automatskih pozadina</string>
-    <string name="pro_feature_one_subtitle">Netko preferira crno-bijele fotografije, netko radije gleda prirodu. Prilagodite automatske pozadine prema tipu fotografija koje želite vidjeti.</string>
-    <string name="pro_feature_two">Buduće ekskluzivne značajka</string>
-    <string name="pro_feature_two_subtitle">Pristup budućim ekskluzivnim pro zbačajkama</string>
-    <string name="pro_feature_three">Podržite razvoj</string>
-    <string name="pro_feature_three_subtitle">Pro verzija pomaže nastaviti razvoj Resplash aplikacije</string>
-    <string name="go_pro">Nadogradite na Pro</string>
-    <string name="restore_purchase">Povrat novaca</string>
-    <string name="upgrade_required">Resplash Pro mora biti aitiviran za tu opciju!</string>
-
-    <!-- Donate -->
-    <string name="support_development">Podržite razvoj</string>
-    <string name="you_are_welcome">You\'re welcome</string>
-
     <!-- About -->
     <string name="about">O proizvodu</string>
     <string name="licenses">Licence</string>

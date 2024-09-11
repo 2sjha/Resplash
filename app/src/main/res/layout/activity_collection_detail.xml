@@ -68,7 +68,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/description_text_view"
-                    tools:text="9 Photos \u2022 Curated by Brandon Lam" />
+                    tools:text="9 Photos \u2022 Curated by XXX YYYY" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <com.google.android.material.appbar.MaterialToolbar

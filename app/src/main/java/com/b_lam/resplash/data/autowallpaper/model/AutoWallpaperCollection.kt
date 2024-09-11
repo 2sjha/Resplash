@@ -4,6 +4,7 @@ import androidx.annotation.Keep
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
+import com.b_lam.resplash.data.photo.model.Photo
 
 @Keep
 @Entity(

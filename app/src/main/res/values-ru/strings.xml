@@ -247,23 +247,6 @@
     <string name="login_success">Вход выполнен успешно</string>
     <string name="need_to_log_in">Вы должны войти, чтобы сделать это</string>
 
-    <!-- Upgrade -->
-    <string name="upgrade_to_resplash_pro">Обновить до Resplash Pro</string>
-    <string name="pro_feature_title">What\'s in it for you?</string>
-    <string name="pro_feature_one">Кастомизирование функции Автообоев</string>
-    <string name="pro_feature_one_subtitle">Some people prefer black &amp; white photos, some would rather see nature images instead of urban ones. Customize exactly what types of wallpapers you see from Auto Wallpaper</string>
-    <string name="pro_feature_two">ЭСклюзивные фишки в будущем</string>
-    <string name="pro_feature_two_subtitle">Обновитесь до Resplash Pro, чтобы получать больше эксклюзивных фишек в будущем</string>
-    <string name="pro_feature_three">Поддержка</string>
-    <string name="pro_feature_three_subtitle">Going pro helps support the development of Resplash</string>
-    <string name="go_pro">Перейти на Resplash Pro</string>
-    <string name="restore_purchase">История покупок</string>
-    <string name="upgrade_required">Вам нужен Resplash Pro, чтобы сделать это!</string>
-
-    <!-- Donation -->
-    <string name="support_development">Поддержать разработчиков</string>
-    <string name="you_are_welcome">Добро пожаловать</string>
-
     <!-- About -->
     <string name="about">О приложении</string>
     <string name="licenses">Лицензия</string>

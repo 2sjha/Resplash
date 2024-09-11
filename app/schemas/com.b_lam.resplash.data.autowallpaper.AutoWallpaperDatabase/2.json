@@ -6,14 +6,8 @@
     "entities": [
       {
         "tableName": "auto_wallpaper_history",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `photo_id` TEXT, `username` TEXT, `name` TEXT, `profile_picture` TEXT, `thumbnail_url` TEXT, `width` INTEGER, `height` INTEGER, `color` TEXT, `date` INTEGER)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`photo_id` TEXT, `username` TEXT, `name` TEXT, `profile_picture` TEXT, `thumbnail_url` TEXT, `width` INTEGER, `height` INTEGER, `color` TEXT, `date` INTEGER, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
         "fields": [
-          {
-            "fieldPath": "id",
-            "columnName": "id",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
           {
             "fieldPath": "photo_id",
             "columnName": "photo_id",
@@ -67,13 +61,19 @@
             "columnName": "date",
             "affinity": "INTEGER",
             "notNull": false
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
           }
         ],
         "primaryKey": {
+          "autoGenerate": true,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": true
+          ]
         },
         "indices": [
           {
@@ -82,6 +82,7 @@
             "columnNames": [
               "date"
             ],
+            "orders": [],
             "createSql": "CREATE INDEX IF NOT EXISTS `index_auto_wallpaper_history_date` ON `${TABLE_NAME}` (`date`)"
           }
         ],
@@ -123,10 +124,10 @@
           }
         ],
         "primaryKey": {
+          "autoGenerate": false,
           "columnNames": [
             "id"
-          ],
-          "autoGenerate": false
+          ]
         },
         "indices": [
           {
@@ -135,6 +136,7 @@
             "columnNames": [
               "date_added"
             ],
+            "orders": [],
             "createSql": "CREATE INDEX IF NOT EXISTS `index_auto_wallpaper_collections_date_added` ON `${TABLE_NAME}` (`date_added`)"
           }
         ],

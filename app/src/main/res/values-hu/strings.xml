@@ -245,23 +245,6 @@
     <string name="login_success">Sikeres bejelentkezés</string>
     <string name="need_to_log_in">Be kell jelentkezned ahhoz, hogy ezt csináld</string>
 
-    <!-- Upgrade -->
-    <string name="upgrade_to_resplash_pro">Frissítés Resplash Pro-ra</string>
-    <string name="pro_feature_title">Miért jó ez neked?</string>
-    <string name="pro_feature_one">Automata háttérkép személyreszabása</string>
-    <string name="pro_feature_one_subtitle">Néhány ember a fekete képeket szereti &amp; fehér képeket, mások inkább természetképeket látnának városi képek helyett. Szabd személyre, hogy pontosan milyen háttérképet szeretnél az automata háttérképben</string>
-    <string name="pro_feature_two">Jövőbeli exkluzív funkciók</string>
-    <string name="pro_feature_two_subtitle">Férj hozzá jövőbeli pro funkciókhoz</string>
-    <string name="pro_feature_three">Támogasd a szerkesztést</string>
-    <string name="pro_feature_three_subtitle">A pro-ra való előfizetés segíti a szerkesztést</string>
-    <string name="go_pro">Fizess elő Pro-ra</string>
-    <string name="restore_purchase">Vásárlás visszavonása</string>
-    <string name="upgrade_required">Resplash Pro-ra van szükséged ahhoz, hogy ezt tedd!</string>
-
-    <!-- Donation -->
-    <string name="support_development">Támogasd a szerkesztést</string>
-    <string name="you_are_welcome">Szívesen</string>
-
     <!-- About -->
     <string name="about">Rólunk</string>
     <string name="licenses">Licenszek</string>

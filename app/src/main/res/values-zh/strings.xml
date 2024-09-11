@@ -244,23 +244,6 @@
     <string name="login_success">登录成功</string>
     <string name="need_to_log_in">您需要登录才能执行此操作</string>
 
-    <!-- Upgrade -->
-    <string name="upgrade_to_resplash_pro">升级到 Resplash Pro</string>
-    <string name="pro_feature_title">您将得到什么？</string>
-    <string name="pro_feature_one">自定义自动壁纸</string>
-    <string name="pro_feature_one_subtitle">有些人喜欢黑白照片，有些人比起城市风光更喜欢自然景色。 准确自定义从自动壁纸中获取的壁纸类型</string>
-    <string name="pro_feature_two">未来的独家功能</string>
-    <string name="pro_feature_two_subtitle">获取未来 Pro 版独有的功能</string>
-    <string name="pro_feature_three">支持开发</string>
-    <string name="pro_feature_three_subtitle">升级到 Pro 版能够支持 Resplash 的开发工作</string>
-    <string name="go_pro">升级到 Pro 版</string>
-    <string name="restore_purchase">恢复购买</string>
-    <string name="upgrade_required">您需要拥有 Resplash Pro 才能执行此操作！</string>
-
-    <!-- Donation -->
-    <string name="support_development">支持开发</string>
-    <string name="you_are_welcome">别客气</string>
-
     <!-- About -->
     <string name="about">关于</string>
     <string name="licenses">开放源代码许可</string>

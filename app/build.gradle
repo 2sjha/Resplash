@@ -1,7 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.android.gms.oss-licenses-plugin'
-apply plugin: 'com.google.gms.google-services'
-apply plugin: 'com.google.firebase.crashlytics'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-parcelize'
@@ -20,11 +18,8 @@ android {
         versionCode 61
         versionName '3.4.1'
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
-        buildConfigField("String", "RELEASE_APP_ID", localProperties['releaseAppId'])
-        buildConfigField("String", "RELEASE_SECRET", localProperties['releaseSecret'])
         buildConfigField("String", "DEV_APP_ID", localProperties['devAppId'])
         buildConfigField("String", "DEV_SECRET", localProperties['devSecret'])
-        buildConfigField("String", "GOOGLE_PLAY_LICENSE_KEY", localProperties['googlePlayLicenseKey'])
         renderscriptTargetApi 33 as int
         renderscriptSupportModeEnabled true
         javaCompileOptions {
@@ -37,7 +32,6 @@ android {
         release {
             minifyEnabled true
             shrinkResources true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
             debuggable true
@@ -98,9 +92,6 @@ dependencies {
     // Material components
     implementation 'com.google.android.material:material:1.9.0-alpha02'
 
-    // Billing
-    implementation 'com.android.billingclient:billing-ktx:5.1.0'
-
     // Kotlin coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
@@ -128,18 +119,6 @@ dependencies {
     // Koin
     implementation 'io.insert-koin:koin-android:3.3.3'
     implementation 'io.insert-koin:koin-androidx-workmanager:3.3.3'
-
-    // Firebase
-    implementation platform('com.google.firebase:firebase-bom:31.2.0')
-    implementation 'com.google.firebase:firebase-analytics-ktx:21.2.0'
-    implementation 'com.google.firebase:firebase-crashlytics:18.3.5'
-    implementation('com.google.firebase:firebase-inappmessaging-ktx:20.1.3', {
-        exclude group: 'io.grpc', module: 'grpc-okhttp'
-    })
-    // Workaround for https://github.com/firebase/firebase-android-sdk/issues/2642
-    implementation 'io.grpc:grpc-okhttp:1.52.1'
-    implementation 'com.google.firebase:firebase-firestore-ktx:24.4.4'
-    implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
 
     // Play Core
     implementation 'com.google.android.play:core:1.10.3'

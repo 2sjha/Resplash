@@ -249,23 +249,6 @@
     <string name="login_success">Вхід виконано успішно</string>
     <string name="need_to_log_in">Вам потрібно авторизуватись щоб зробити це</string>
 
-    <!-- Upgrade -->
-    <string name="upgrade_to_resplash_pro">Оновитись до Resplash Pro</string>
-    <string name="pro_feature_title">Що саме Ви отримаєте?</string>
-    <string name="pro_feature_one">Додаткові налаштування для Auto Wallpaper</string>
-    <string name="pro_feature_one_subtitle">Дехто надає перевагу чорно-білим фото, дехто навпаки, був би радий побачити фото природи в природніх кольорах. Налаштуй які саме фонові малюнки ти хочеш бачити на своєму пристрої з Auto Wallpaper</string>
-    <string name="pro_feature_two">Майбутній унікальний функціонал</string>
-    <string name="pro_feature_two_subtitle">Отримай доступ до майбутнього унікального функціоналу</string>
-    <string name="pro_feature_three">Підтримати розробку</string>
-    <string name="pro_feature_three_subtitle">Стаючи Pro Ви підтримуєте розбробку Resplash</string>
-    <string name="go_pro">Перейти на Resplash Pro</string>
-    <string name="restore_purchase">Відновити покупки</string>
-    <string name="upgrade_required">Вам потрібно Resplash Pro щоб зробити це!</string>
-
-    <!-- Donation -->
-    <string name="support_development">Підтримати розробку</string>
-    <string name="you_are_welcome">Дякую Вам!</string>
-
     <!-- About -->
     <string name="about">Про Додаток</string>
     <string name="licenses">Ліцензії</string>

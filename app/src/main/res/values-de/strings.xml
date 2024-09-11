@@ -245,23 +245,6 @@
     <string name="login_success">Anmeldung erfolgreich</string>
     <string name="need_to_log_in">Du musst eingeloggt sein, um das zu tun</string>
 
-    <!-- Upgrade -->
-    <string name="upgrade_to_resplash_pro">Auf Resplash Pro upgraden</string>
-    <string name="pro_feature_title">Was ist denn da drin?</string>
-    <string name="pro_feature_one">Auto-Wallpaper anpassen</string>
-    <string name="pro_feature_one_subtitle">Manche mögen Schwarz-Weiß-Bilder, andere sehen sich lieber Landschaftsbilder statt Stadtfotos an. Passe genau an, welche Arten von Hintergrundbildern du in Auto-Wallpaper sehen möchtest.</string>
-    <string name="pro_feature_two">Exklusive Funktionen in der Zukunft</string>
-    <string name="pro_feature_two_subtitle">Erhalte Zugang zu zukünftigen exklusiven Funktionen für Pro-Nutzer</string>
-    <string name="pro_feature_three">Entwicklung unterstützen</string>
-    <string name="pro_feature_three_subtitle">Mit dem Upgrade zu Pro unterstützt du die Entwicklung von Resplash</string>
-    <string name="go_pro">Zu Pro wechseln</string>
-    <string name="restore_purchase">Einkauf wiederherstellen</string>
-    <string name="upgrade_required">Dazu benötigst du Resplash Pro!</string>
-
-    <!-- Donation -->
-    <string name="support_development">Entwicklung unterstützen</string>
-    <string name="you_are_welcome">Bitte</string>
-
     <!-- About -->
     <string name="about">Über</string>
     <string name="licenses">Lizenzen</string>

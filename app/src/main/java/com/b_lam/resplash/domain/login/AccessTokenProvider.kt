@@ -13,25 +13,17 @@ class AccessTokenProvider(context: Context) {
     private val sharedPreferences: SharedPreferences =
         PreferenceManager.getDefaultSharedPreferences(context)
 
-    val clientId = if (BuildConfig.DEBUG) {
-        if (sharedPreferences.getString(DEBUG_APP_ID_KEY, null).isNullOrBlank()) {
+    val clientId = if (sharedPreferences.getString(DEBUG_APP_ID_KEY, null).isNullOrBlank()) {
             BuildConfig.DEV_APP_ID
         } else {
             sharedPreferences.getString(DEBUG_APP_ID_KEY, null) ?: BuildConfig.DEV_APP_ID
         }
-    } else {
-        BuildConfig.RELEASE_APP_ID
-    }
 
-    val clientSecret = if (BuildConfig.DEBUG) {
-        if (sharedPreferences.getString(DEBUG_APP_SECRET_KEY, null).isNullOrBlank()) {
+    val clientSecret = if (sharedPreferences.getString(DEBUG_APP_SECRET_KEY, null).isNullOrBlank()) {
             BuildConfig.DEV_SECRET
         } else {
             sharedPreferences.getString(DEBUG_APP_SECRET_KEY, null) ?: BuildConfig.DEV_SECRET
         }
-    } else {
-        BuildConfig.RELEASE_SECRET
-    }
 
     val accessToken: String?
         get() = sharedPreferences.getString(ACCESS_TOKEN_KEY, null)

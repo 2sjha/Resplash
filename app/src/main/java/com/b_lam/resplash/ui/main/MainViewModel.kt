@@ -3,7 +3,6 @@ package com.b_lam.resplash.ui.main
 import androidx.lifecycle.*
 import com.b_lam.resplash.data.photo.model.Photo
 import com.b_lam.resplash.domain.Listing
-import com.b_lam.resplash.domain.billing.BillingRepository
 import com.b_lam.resplash.domain.collection.CollectionDataSource
 import com.b_lam.resplash.domain.collection.CollectionRepository
 import com.b_lam.resplash.domain.login.LoginRepository
@@ -16,8 +15,7 @@ import kotlinx.coroutines.launch
 class MainViewModel(
     private val photoRepository: PhotoRepository,
     private val collectionRepository: CollectionRepository,
-    private val loginRepository: LoginRepository,
-    billingRepository: BillingRepository
+    private val loginRepository: LoginRepository
 ) : ViewModel() {
 
     private val _navigationItemSelectedLiveData = MutableLiveData<Event<Int>>()
@@ -25,8 +23,6 @@ class MainViewModel(
 
     private val _authorizedLiveData = MutableLiveData(loginRepository.isAuthorized())
     val authorizedLiveData: LiveData<Boolean> = _authorizedLiveData
-
-    val resplashProLiveData = billingRepository.resplashProLiveData
 
     private val _usernameLiveData = MutableLiveData<String?>()
     val usernameLiveData: LiveData<String?> = _usernameLiveData

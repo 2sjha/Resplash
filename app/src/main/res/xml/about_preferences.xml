@@ -13,16 +13,6 @@
     <PreferenceCategory app:title="@string/app_name"
         app:iconSpaceReserved="false">
 
-        <Preference app:title="@string/support_development"
-            app:iconSpaceReserved="false"
-            app:summary="@string/donate_summary">
-
-            <intent
-                android:action="android.intent.action.VIEW"
-                android:targetClass="com.b_lam.resplash.ui.donation.DonationActivity"
-                android:targetPackage="@string/package_name" />
-        </Preference>
-
         <Preference app:title="@string/github_title"
             app:iconSpaceReserved="false"
             app:summary="@string/github_summary">

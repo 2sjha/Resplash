@@ -32,8 +32,7 @@
             android:layout_marginStart="@dimen/keyline_6"
             android:singleLine="true"
             android:layout_gravity="center_vertical"
-            style="@style/TextAppearance.Resplash.Subtitle2"
-            tools:text="Brandon Lam" />
+            style="@style/TextAppearance.Resplash.Subtitle2"/>
     </LinearLayout>
 
     <com.google.android.material.card.MaterialCardView

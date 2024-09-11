@@ -1,27 +1,21 @@
 package com.b_lam.resplash.ui.autowallpaper.collections
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.b_lam.resplash.data.autowallpaper.model.AutoWallpaperCollection
-import com.b_lam.resplash.data.autowallpaper.model.AutoWallpaperCollectionDocument
 import com.b_lam.resplash.data.collection.model.Collection
-import com.b_lam.resplash.domain.SharedPreferencesRepository
 import com.b_lam.resplash.domain.autowallpaper.AutoWallpaperRepository
 import com.b_lam.resplash.domain.collection.CollectionRepository
 import com.b_lam.resplash.util.Result
-import com.b_lam.resplash.util.error
 import com.b_lam.resplash.util.livedata.Event
-import com.google.firebase.firestore.Source
-import com.google.firebase.firestore.ktx.toObject
 import kotlinx.coroutines.launch
-import java.util.concurrent.TimeUnit
 
 class AutoWallpaperCollectionViewModel(
     private val autoWallpaperRepository: AutoWallpaperRepository,
-    private val collectionRepository: CollectionRepository,
-    private val sharedPreferencesRepository: SharedPreferencesRepository
+    private val collectionRepository: CollectionRepository
 ) : ViewModel() {
 
     val selectedAutoWallpaperCollections = autoWallpaperRepository.getSelectedAutoWallpaperCollections()
@@ -35,24 +29,14 @@ class AutoWallpaperCollectionViewModel(
 
     private val _featuredCollectionLiveData by lazy {
         val liveData = MutableLiveData<List<AutoWallpaperCollection>>()
-        val source = if (areSuggestedCollectionsStale(sharedPreferencesRepository.lastFeaturedCollectionsFetch)) {
-            Source.DEFAULT
-        } else {
-            Source.CACHE
-        }
-        getFeaturedCollections(source, liveData)
+        getFeaturedCollections(liveData)
         return@lazy liveData
     }
     val featuredCollectionLiveData: LiveData<List<AutoWallpaperCollection>> = _featuredCollectionLiveData
 
     private val _popularCollectionLiveData by lazy {
         val liveData = MutableLiveData<List<AutoWallpaperCollection>>()
-        val source = if (areSuggestedCollectionsStale(sharedPreferencesRepository.lastPopularCollectionsFetch)) {
-            Source.DEFAULT
-        } else {
-            Source.CACHE
-        }
-        getPopularCollections(source, liveData)
+        getPopularCollections(liveData)
         return@lazy liveData
     }
     val popularCollectionLiveData: LiveData<List<AutoWallpaperCollection>> = _popularCollectionLiveData
@@ -80,59 +64,50 @@ class AutoWallpaperCollectionViewModel(
     }
 
     private fun getFeaturedCollections(
-        source: Source,
         liveData: MutableLiveData<List<AutoWallpaperCollection>>,
-        retryCount: Int = 0
     ) {
-        if (retryCount <= MAX_RETRIES) {
-            autoWallpaperRepository
-                .getFeaturedCollections()
-                .get(source)
-                .addOnSuccessListener { documentSnapshot ->
-                    if (!documentSnapshot.metadata.isFromCache)
-                        sharedPreferencesRepository.lastFeaturedCollectionsFetch =
-                            System.currentTimeMillis()
-                    documentSnapshot.toObject<AutoWallpaperCollectionDocument>()?.collections?.let {
-                        liveData.postValue(it)
-                    }
-                }
-                .addOnFailureListener { exception ->
-                    error("Error getting documents", exception)
-                    getFeaturedCollections(Source.SERVER, liveData, retryCount + 1)
-                }
+        viewModelScope.launch {
+            val result = collectionRepository.getCollections(1)
+            if (result is Result.Success) {
+                val autoWallpaperCollections = mapToAutoWallpaperCollectionList(result.value)
+                liveData.postValue(autoWallpaperCollections)
+            }
         }
     }
 
     private fun getPopularCollections(
-        source: Source,
         liveData: MutableLiveData<List<AutoWallpaperCollection>>,
-        retryCount: Int = 0
     ) {
-        if (retryCount <= MAX_RETRIES) {
-            autoWallpaperRepository
-                .getPopularCollections()
-                .get(source)
-                .addOnSuccessListener { documentSnapshot ->
-                    if (!documentSnapshot.metadata.isFromCache)
-                        sharedPreferencesRepository.lastPopularCollectionsFetch =
-                            System.currentTimeMillis()
-                    documentSnapshot.toObject<AutoWallpaperCollectionDocument>()?.collections?.let {
-                        liveData.postValue(it)
-                    }
-                }
-                .addOnFailureListener { exception ->
-                    error("Error getting documents", exception)
-                    getPopularCollections(Source.SERVER, liveData, retryCount + 1)
-                }
+        viewModelScope.launch {
+            val result = collectionRepository.searchCollections("wallpapers", 1)
+            if (result is Result.Success) {
+                val autoWallpaperCollections = mapToAutoWallpaperCollectionList(result.value.results)
+                liveData.postValue(autoWallpaperCollections)
+            }
         }
     }
 
-    private fun areSuggestedCollectionsStale(lastFetch: Long) =
-        System.currentTimeMillis() - lastFetch > ONE_DAY
+    private fun mapToAutoWallpaperCollectionList(collections: List<Collection>): List<AutoWallpaperCollection> {
+        return collections.map { collection ->
+            AutoWallpaperCollection(
+                id = collection.id,
+                title = collection.title,
+                user_name = collection.user?.name,
+                cover_photo = collection.cover_photo?.urls?.regular,
+                date_added = collection.published_at?.let { parseDateToMillis(it) }
+            )
+        }
+    }
 
-    companion object {
-
-        private const val MAX_RETRIES = 1
-        private val ONE_DAY = TimeUnit.DAYS.toMillis(1)
+    @SuppressLint("NewApi")
+    private fun parseDateToMillis(dateString: String): Long? {
+        return try {
+            val formatter = java.time.format.DateTimeFormatter.ISO_DATE_TIME
+            val parsedDate = java.time.LocalDateTime.parse(dateString, formatter)
+            parsedDate.atZone(java.time.ZoneId.systemDefault()).toInstant().toEpochMilli()
+        } catch (e: Exception) {
+            e.printStackTrace()
+            null
+        }
     }
 }
