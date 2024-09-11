@@ -41,7 +41,6 @@
             android:theme="@style/Resplash.Theme.DayNight.ActionBar" />
         <activity android:name=".ui.about.AboutActivity" />
         <activity android:name=".ui.debug.DebugActivity" />
-        <activity android:name=".ui.donation.DonationActivity" />
         <activity android:name=".ui.autowallpaper.history.AutoWallpaperHistoryActivity" />
         <activity android:name=".ui.autowallpaper.collections.AutoWallpaperCollectionActivity" />
         <activity

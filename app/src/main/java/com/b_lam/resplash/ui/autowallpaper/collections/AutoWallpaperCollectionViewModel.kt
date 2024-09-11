@@ -13,6 +13,7 @@ import com.b_lam.resplash.util.Result
 import com.b_lam.resplash.util.livedata.Event
 import kotlinx.coroutines.launch
 
+// TODO: Fix this whole activity
 class AutoWallpaperCollectionViewModel(
     private val autoWallpaperRepository: AutoWallpaperRepository,
     private val collectionRepository: CollectionRepository
@@ -99,6 +100,7 @@ class AutoWallpaperCollectionViewModel(
         }
     }
 
+    // TODO: Fix
     @SuppressLint("NewApi")
     private fun parseDateToMillis(dateString: String): Long? {
         return try {
